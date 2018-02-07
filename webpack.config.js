@@ -3,10 +3,14 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
-plugins = [new HtmlWebpackPlugin({}),
+plugins = [new HtmlWebpackPlugin({
+      template: 'client/index.html',
+        filename: 'index.html',
+        inject: 'body',
+}),
     new webpack.optimize.UglifyJsPlugin()
 ]
-let env = 'development';
+let env = 'production';
 module.exports = {
     entry: (env !== 'production' ? [
         'react-hot-loader/patch',
